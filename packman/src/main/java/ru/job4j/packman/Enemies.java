@@ -76,7 +76,6 @@ public class Enemies {
             }
 
             if (!moved || isEnemyCollision(newX, newY)) {
-                // Move backward in x direction
                 if (Math.abs(diffX) <= Math.abs(diffY)) {
                     newX = enemy.x() - (int) Math.signum(diffX) * enemySpeed;
                 } else {
