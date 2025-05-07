@@ -42,5 +42,4 @@ class BishopBlackTest {
                 });
         assertThat(exp.getMessage()).isEqualTo("Could not move by diagonal from C1 to D1");
     }
-
 }
