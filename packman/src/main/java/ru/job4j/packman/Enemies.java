@@ -10,6 +10,7 @@ import java.util.Set;
 public class Enemies {
     record Enemy(int x, int y) {
     }
+
     private final GraphicsContext gc;
     private final int playerSize;
     private final int enemySize;
@@ -60,7 +61,6 @@ public class Enemies {
                     moved = true;
                 }
             } else {
-
                 if (Math.abs(diffX) <= Math.abs(diffY)) {
                     double nextX = enemy.x() + Math.signum(diffX) * enemySpeed;
                     if (!isCollision(nextX, enemy.y(), walls)
@@ -86,10 +86,8 @@ public class Enemies {
                     newY = enemy.y() - (int) Math.signum(diffY) * enemySpeed;
                 }
             }
-
             updatedEnemies.add(new Enemy(newX, newY));
         }
-
         enemies.clear();
         enemies.addAll(updatedEnemies);
     }
