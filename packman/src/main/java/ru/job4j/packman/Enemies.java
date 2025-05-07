@@ -42,31 +42,26 @@ public class Enemies {
         for (var enemy : enemies) {
             double diffX = pacman.getPlayerX() - enemy.x();
             double diffY = pacman.getPlayerY() - enemy.y();
-
             int newX = enemy.x();
             int newY = enemy.y();
-
             boolean moved = false;
 
-            // Prioritize movement based on same position on one axis
+
             if (enemy.x() == pacman.getPlayerX()) {
-                // Same x position, move by y coordinate
                 double nextY = enemy.y() + Math.signum(diffY) * enemySpeed;
                 if (!isCollision(enemy.x(), nextY, walls) && !isEnemyCollision(newX, (int) nextY)) {
                     newY = (int) nextY;
                     moved = true;
                 }
             } else if (enemy.y() == pacman.getPlayerY()) {
-                // Same y position, move by x coordinate
                 double nextX = enemy.x() + Math.signum(diffX) * enemySpeed;
                 if (!isCollision(nextX, enemy.y(), walls) && !isEnemyCollision((int) nextX, newY)) {
                     newX = (int) nextX;
                     moved = true;
                 }
             } else {
-                // Standard movement logic based on smaller difference between x and y
+
                 if (Math.abs(diffX) <= Math.abs(diffY)) {
-                    // Move by x coordinate
                     double nextX = enemy.x() + Math.signum(diffX) * enemySpeed;
                     if (!isCollision(nextX, enemy.y(), walls)
                             && !isEnemyCollision((int) nextX, newY)) {
@@ -74,7 +69,6 @@ public class Enemies {
                         moved = true;
                     }
                 } else {
-                    // Move by y coordinate
                     double nextY = enemy.y() + Math.signum(diffY) * enemySpeed;
                     if (!isCollision(enemy.x(), nextY, walls)
                             && !isEnemyCollision(newX, (int) nextY)) {
@@ -84,13 +78,11 @@ public class Enemies {
                 }
             }
 
-            // If collision occurred or collided with another enemy, move backward
             if (!moved || isEnemyCollision(newX, newY)) {
                 // Move backward in x direction
                 if (Math.abs(diffX) <= Math.abs(diffY)) {
                     newX = enemy.x() - (int) Math.signum(diffX) * enemySpeed;
                 } else {
-                    // Move backward in y direction
                     newY = enemy.y() - (int) Math.signum(diffY) * enemySpeed;
                 }
             }
