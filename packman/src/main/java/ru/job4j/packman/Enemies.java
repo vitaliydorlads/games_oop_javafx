@@ -39,15 +39,12 @@ public class Enemies {
 
     public void update(Pacman pacman, Walls walls) {
         Set<Enemy> updatedEnemies = new HashSet<>();
-
         for (var enemy : enemies) {
             double diffX = pacman.getPlayerX() - enemy.x();
             double diffY = pacman.getPlayerY() - enemy.y();
             int newX = enemy.x();
             int newY = enemy.y();
             boolean moved = false;
-
-
             if (enemy.x() == pacman.getPlayerX()) {
                 double nextY = enemy.y() + Math.signum(diffY) * enemySpeed;
                 if (!isCollision(enemy.x(), nextY, walls) && !isEnemyCollision(newX, (int) nextY)) {
