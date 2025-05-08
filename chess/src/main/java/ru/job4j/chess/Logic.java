@@ -25,7 +25,7 @@ public final class Logic {
         for (Figure figure : figures) {
             for (Cell step : steps) {
                 if (figure != null && figure.position().equals(step)) {
-                    throw new OccupiedCellException();
+                    throw new OccupiedCellException("Cell is busy");
                 }
             }
         }

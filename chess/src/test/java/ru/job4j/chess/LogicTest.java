@@ -28,7 +28,7 @@ public class LogicTest {
         OccupiedCellException exception = assertThrows(OccupiedCellException.class, () -> {
             logic.move(Cell.C1, Cell.G5);
         });
-        assertThat(exception.getMessage());
+        assertThat(exception.getMessage()).isEqualTo("Cell is busy");
     }
 
     @Test
@@ -39,6 +39,6 @@ public class LogicTest {
         ImpossibleMoveException exception = assertThrows(ImpossibleMoveException.class, () -> {
             logic.move(Cell.C1, Cell.D1);
         });
-        assertThat(exception.getMessage());
+        assertThat(exception.getMessage()).isEqualTo("Could not move by diagonal from C1 to D1");
     }
 }
